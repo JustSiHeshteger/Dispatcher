@@ -1,4 +1,5 @@
-﻿using DispatcherAdmin.Service;
+﻿using DispatcherAdmin.Model;
+using DispatcherAdmin.Service;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,14 @@ namespace DispatcherAdmin
                 _serverConnection = new ServerConnection();
                 _serverConnection.ConnectAsync();
             });
+        }
+
+        private void SendBtn_Click(object sender, EventArgs e)
+        {
+            var messageModel = new MessageModel() { AutobusNumber = null, Message = MessageTB.Text };
+
+            if (_serverConnection != null)
+                _serverConnection.SendMessage(messageModel);
         }
     }
 }

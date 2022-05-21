@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Sockets;
 using System.Text;
-using System.Text.Json;
 
-namespace DispatcherServer
+namespace Server
 {
     public class ClientObject
     {
@@ -40,7 +40,7 @@ namespace DispatcherServer
                 {
                     try
                     {
-                        var message = JsonSerializer.Deserialize<MessageModel>(_reader.ReadString());
+                        var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
                         Console.WriteLine($"{message.Message}");
 
                         var messageModel = new MessageModel() { AutobusNumber = null, Message = "Сообщение успешно отправлено" };
@@ -48,7 +48,7 @@ namespace DispatcherServer
                     }
                     catch
                     {
-                        var message = JsonSerializer.Deserialize<MessageModel>(_reader.ReadString());
+                        var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
 
                         var messageModel = new MessageModel() { AutobusNumber = null, Message = "Сообщение не было отправлено" };
                         server.BroadcastMessage(messageModel);
@@ -71,7 +71,7 @@ namespace DispatcherServer
 
         internal void SendMessage(MessageModel message)
         {
-            string mes = JsonSerializer.Serialize(message);
+            string mes = JsonConvert.SerializeObject(message);
             this._writer.Write(mes);
         }
 

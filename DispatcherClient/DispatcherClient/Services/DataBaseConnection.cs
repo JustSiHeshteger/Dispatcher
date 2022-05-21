@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-using DispatcherClient.Model;
 using MySql.Data.MySqlClient;
+
+using DispatcherClient.Model;
 
 namespace DispatcherClient.Services
 {

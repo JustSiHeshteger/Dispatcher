@@ -13,8 +13,9 @@ namespace DispatcherAdmin.Service
 {
     internal class ServerConnection
     {
-        private readonly int port = 9002;
-        private readonly string host = "127.0.0.1";
+        private readonly int port = 1337;
+        //private readonly string host = "127.0.0.1";
+        private readonly string host = "3.73.109.65";
 
         private TcpClient _client;
         private NetworkStream _stream;
