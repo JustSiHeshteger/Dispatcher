@@ -33,29 +33,15 @@ namespace Server
                 _writer = new BinaryWriter(Stream, Encoding.Unicode, false);
                 _reader = new BinaryReader(Stream, Encoding.Unicode, false);
 
-                ///<summary>
-                ///Изменить прием сообщения
-                ///</summary>
                 while (true)
                 {
-                    try
-                    {
-                        var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
-                        Console.WriteLine($"{message.Message}");
+                    var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
+                    Console.WriteLine($"{message.Message}");
 
-                        var messageModel = new MessageModel() { AutobusNumber = null, Message = "Сообщение успешно отправлено" };
-                        server.BroadcastMessage(messageModel);
-                    }
-                    catch
-                    {
-                        var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
+                    var messageModel = new MessageModel() { AutobusNumber = null, Message = message.Message };
+                    server.BroadcastMessage(messageModel);
 
-                        var messageModel = new MessageModel() { AutobusNumber = null, Message = "Сообщение не было отправлено" };
-                        server.BroadcastMessage(messageModel);
-                        
-                        Console.WriteLine($"{message.Message}");
-                        break;
-                    }
+                    Console.WriteLine($"{message.Message}");
                 }
             }
             catch (Exception e)

@@ -16,12 +16,17 @@ namespace DispatcherAdmin
     {
         private ClientConnection _dataBaseConnection;
         private ServerConnection _serverConnection;
+
+        private List<AutobusModel> AllAutobuses;
+
         public MainForm()
         {
             InitializeComponent();
-            ConnectToDataBaseAsync();
+            ConnectToDataBase();
             ConnectToServerAsync();
             //CheckConnection();
+
+            RefreshBtn.Click += (s, e) =>  ConnectToDataBase();
         }
 
         private void CheckConnection()
@@ -58,14 +63,22 @@ namespace DispatcherAdmin
         /// <summary>
         /// Подключение к базе данных
         /// </summary>
-        private async void ConnectToDataBaseAsync()
+        private void ConnectToDataBase()
         {
-            await Task.Run(() =>
-            {
-                _dataBaseConnection = new ClientConnection(Properties.Settings.Default.ConnectionString);
-                ClientDataGridView.DataSource = _dataBaseConnection.GetAllClients();
-                AutobusDataGridView.DataSource = _dataBaseConnection.GetAllAutobus();
-            });
+            _dataBaseConnection = new ClientConnection(Properties.Settings.Default.ConnectionString);
+            RefreshData();
+        }
+
+        private void RefreshData()
+        {
+            AllAutobuses = new List<AutobusModel>();
+            AllAutobuses = _dataBaseConnection.GetAllAutobus();
+
+            AutobusDataGridView.DataSource = AllAutobuses;
+
+            AutobusLB.Items.Clear();
+            foreach (var autobus in AllAutobuses)
+                AutobusLB.Items.Add(autobus.NumberAutobus);
         }
 
         /// <summary>
@@ -85,7 +98,32 @@ namespace DispatcherAdmin
             var messageModel = new MessageModel() { AutobusNumber = null, Message = MessageTB.Text };
 
             if (_serverConnection != null)
+            {
                 _serverConnection.SendMessage(messageModel);
+                MessageTB.Text = "";
+            }
+        }
+
+        private void AutobusLB_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(AutobusLB.SelectedItem != null)
+                MessageTB.Text += AutobusLB.SelectedItem.ToString() + ", ";
+        }
+
+        private void AddAutobusBtn_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(AutobusTB.Text))
+            {
+                _dataBaseConnection.AddNewAutobus(AutobusTB.Text);
+                RefreshData();
+            }
+        }
+
+        private void DeleteAutobusBtn_Click(object sender, EventArgs e)
+        {
+            string id = AutobusDataGridView[0, AutobusDataGridView.CurrentRow.Index].Value.ToString();
+            _dataBaseConnection.DeleteAutobus(id);
+            RefreshData();
         }
     }
 }

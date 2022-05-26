@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 
 using DispatcherClient.Model;
 
@@ -13,7 +13,7 @@ namespace DispatcherClient.Services
     {
         public DataBaseConnection()
         {
-            base._sqlConnection = new MySqlConnection(base.ConnectionString);
+            base._sqlConnection = new SqlConnection(base.ConnectionString);
         }
 
         public async Task<List<AutobusModel>> GetAllData()
@@ -26,7 +26,7 @@ namespace DispatcherClient.Services
                 {
                     base.ConnectOpen();
 
-                    using (var command = new MySqlCommand())
+                    using (var command = new SqlCommand())
                     {
                         command.Connection = _sqlConnection;
                         command.CommandText = "SELECT * FROM Autobus";

@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DispatcherAdmin.Service
 {
@@ -12,7 +14,7 @@ namespace DispatcherAdmin.Service
         {
             this.Connection = new SqlConnection(connection);
         }
-        public IEnumerable<AutobusModel> GetAllAutobus()
+        public List<AutobusModel> GetAllAutobus()
         {
             var autobusList = new List<AutobusModel>();
 
@@ -22,7 +24,7 @@ namespace DispatcherAdmin.Service
 
                 using (var command = new SqlCommand())
                 {
-                    command.Connection = _connection;
+                    command.Connection = base.Connection;
                     command.CommandText = "SELECT * FROM Autobus ORDER BY id_autobus";
 
                     using (var reader = command.ExecuteReader())
@@ -39,7 +41,7 @@ namespace DispatcherAdmin.Service
                     }
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw new Exception(ex.Message);
             }
@@ -51,45 +53,52 @@ namespace DispatcherAdmin.Service
             return autobusList;
         }
 
-        public IEnumerable<ClientModel> GetAllClients()
+        public void AddNewAutobus(string autobus)
         {
-            var clientList = new List<ClientModel>();
-
             try
             {
-                ConnectionOpen();   
+                ConnectionOpen();
+
                 using (var command = new SqlCommand())
                 {
-                    command.Connection = _connection;
-                    command.CommandText = "SELECT * FROM Client ORDER BY id";
-
-                    using (var reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            var clientModel = new ClientModel
-                            {
-                                Id = int.TryParse(reader[0].ToString(), out _) ? Convert.ToInt32(reader[0]) : 0,
-                                NumberPhone = reader[1].ToString(),
-                                Name = reader[2].ToString(),
-                                Surname = reader[3].ToString()
-                            };
-
-                            clientList.Add(clientModel);
-                        }
-                    }
+                    command.Connection = base.Connection;
+                    command.CommandText = "INSERT INTO Autobus VALUES (@numberAutobus)";
+                    command.Parameters.Add("@numberAutobus", SqlDbType.NVarChar).Value = autobus;
+                    command.ExecuteNonQuery();
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                throw new Exception(ex.Message);
+                MessageBox.Show("Ошибка", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             finally
             {
                 ConnectionClose();
             }
+        }
 
-            return clientList;
+        public void DeleteAutobus(string id)
+        {
+            try
+            {
+                ConnectionOpen();
+
+                using(var command = new SqlCommand())
+                {
+                    command.Connection = base.Connection;
+                    command.CommandText = "DELETE FROM Autobus WHERE id_autobus=@idAutobus";
+                    command.Parameters.Add("@idAutobus", SqlDbType.Int).Value = id;
+                    command.ExecuteNonQuery();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                ConnectionClose();
+            }
         }
     }
 }
