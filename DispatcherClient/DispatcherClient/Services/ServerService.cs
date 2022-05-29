@@ -8,13 +8,13 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using DispatcherClient.Model;
+using DispatcherClient.Services.Interfaces;
 
 namespace DispatcherClient.Services
 {
     internal class ServerService
     {
         private const string host = "3.73.109.65";
-        //private const string host = "127.0.0.1";
         private const int port = 1337;
 
         private TcpClient _client;
@@ -55,13 +55,6 @@ namespace DispatcherClient.Services
                 try
                 {
                     var message = JsonConvert.DeserializeObject<MessageModel>(_reader.ReadString());
-
-                    //string autobuses = "";
-
-                    //foreach (var autobus in message.AutobusNumber)
-                    //    autobuses += autobus + " ";
-
-                    //_notification.Send("Внимание", message.Message + autobuses);
                     _notification.Send("Внимание", message.Message);
                 }
                 catch (Exception ex)

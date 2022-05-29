@@ -1,6 +1,8 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FreshMvvm;
+using DispatcherClient.PageModels;
 
 namespace DispatcherClient
 {
@@ -10,7 +12,10 @@ namespace DispatcherClient
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            var page = FreshPageModelResolver.ResolvePageModel<LoginPageModel>();
+            var navigationPage = new FreshNavigationContainer(page);
+
+            MainPage = navigationPage;
         }
 
         protected override void OnStart()

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DispatcherClient.Pages.LoginPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+
+                <StackLayout>
+                    <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
+                        <Label Text="Вход в аккаунт" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Padding="0, 20, 0, 0">
+                    <Label Text="Телефон" TextColor="Black" FontSize="14" Margin="20, 0, 20, 0"/>
+                    <Entry Placeholder="8-9**-***-**-**" Margin="20, 0, 20, 0" Text="{Binding Login}"/>
+                </StackLayout>
+
+                <StackLayout Padding="0, 40, 0, 0">
+                    <Label Text="Пароль" TextColor="Black" FontSize="14" Margin="20, 0, 20, 0"/>
+                    <Entry Placeholder="admin" Margin="20, 0, 20, 0" Text="{Binding Password}"/>
+                </StackLayout>
+
+                <StackLayout Padding="0, 100, 0, 0" VerticalOptions="EndAndExpand">
+                    <Button Margin="100, 0, 100, 0" Text="Войти" Command="{Binding EnterInAccountCommand}"/>
+                    <Button Text="Регистрация" TextColor="Black" FontSize="14" Margin="100, 0, 100, 70" Command="{Binding RegistrationOpenCommand}"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

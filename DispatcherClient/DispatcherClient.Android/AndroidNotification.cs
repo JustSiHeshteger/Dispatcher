@@ -6,6 +6,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using AndroidX.Core.App;
+using DispatcherClient.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

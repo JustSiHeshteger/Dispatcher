@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ClientAndroid.Pages.MainPage">
+
+    <StackLayout>
+        <Button Text="Следующая страница" Command="{Binding OpenLogin}"></Button>
+    </StackLayout>
+
+</ContentPage>
