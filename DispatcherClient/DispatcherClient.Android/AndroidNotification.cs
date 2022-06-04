@@ -45,7 +45,6 @@ namespace DispatcherClient.Droid
 
             Notification notification = builder.Build();
             manager.Notify(notify_index++, notification);
-
         }
     }
 }

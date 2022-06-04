@@ -93,7 +93,7 @@ namespace DispatcherAdmin
         {
             var messageModel = new MessageModel() { AutobusNumber = null, Message = MessageTB.Text };
 
-            if (_serverConnection != null)
+            if (_serverConnection != null && !string.IsNullOrWhiteSpace(MessageTB.Text))
             {
                 _serverConnection.SendMessage(messageModel);
                 MessageTB.Text = "";

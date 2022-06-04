@@ -11,8 +11,8 @@ namespace Server
 {
     public class ServerObject
     {
-        static TcpListener tcpListener; // сервер для прослушивания
-        readonly List<ClientObject> clients = new List<ClientObject>(); // все подключения
+        static TcpListener tcpListener; 
+        readonly List<ClientObject> clients = new List<ClientObject>();
 
         protected internal void AddConnection(ClientObject clientObject)
         {
@@ -20,13 +20,10 @@ namespace Server
         }
         protected internal void RemoveConnection(string id)
         {
-            // получаем по id закрытое подключение
             ClientObject client = clients.FirstOrDefault(c => c.Id == id);
-            // и удаляем его из списка подключений
             if (client != null)
                 clients.Remove(client);
         }
-        // прослушивание входящих подключений
         protected internal void Listen()
         {
             try
@@ -50,7 +47,6 @@ namespace Server
             }
         }
 
-        //Трансляция сообщения подключенным клиентам
         protected internal void BroadcastMessage(MessageModel message)
         {
             foreach (var client in clients)
@@ -59,7 +55,6 @@ namespace Server
             }
         }
 
-        // отключение всех клиентов
         protected internal void Disconnect()
         {
             tcpListener.Stop();
