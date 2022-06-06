@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <ScrollView>
             <ListView ItemsSource="{Binding Autobuses}" RefreshCommand="{Binding RefreshAutobuses}"
-                      SelectionMode="None" IsPullToRefreshEnabled="true" RefreshControlColor="Orange"/>
+                       IsPullToRefreshEnabled="true" RefreshControlColor="Orange" SelectedItem="{Binding SelectedAutobus}"/>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

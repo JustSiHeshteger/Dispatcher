@@ -10,6 +10,7 @@ namespace DispatcherClient.Model
     {
         private int _idAutobus;
         private string _numberAutobus;
+        private string _pathAutobus;
 
 
         [DisplayName("Id Автобуса")]
@@ -27,6 +28,16 @@ namespace DispatcherClient.Model
         {
             get => _numberAutobus;
             set => _numberAutobus = value;
+        }
+
+
+
+        [DisplayName("Маршрут автобуса")]
+        [StringLength(1000, MinimumLength = 0, ErrorMessage = "Номер автобуса должен быть от 0 до 1000 символов")]
+        public string PathAutobus
+        {
+            get => _pathAutobus;
+            set => _pathAutobus = value;
         }
     }
 }

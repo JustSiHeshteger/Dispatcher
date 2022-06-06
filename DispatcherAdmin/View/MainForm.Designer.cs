@@ -30,39 +30,41 @@ namespace DispatcherAdmin
         private void InitializeComponent()
         {
             this.ViewAutobus = new System.Windows.Forms.TabPage();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.AutobusDataGridView = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
+            this.DeleteAutobusBtn = new System.Windows.Forms.Button();
+            this.AddAutobusBtn = new System.Windows.Forms.Button();
+            this.AutobusTB = new System.Windows.Forms.TextBox();
             this.Message = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.SendBtn = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.RefreshBtn = new System.Windows.Forms.Button();
-            this.AutobusLB = new System.Windows.Forms.ListBox();
+            this.MessageTB = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.MessageTB = new System.Windows.Forms.TextBox();
+            this.AutobusLB = new System.Windows.Forms.ListBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.RefreshBtn = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.SendBtn = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.AutobusTB = new System.Windows.Forms.TextBox();
-            this.AddAutobusBtn = new System.Windows.Forms.Button();
-            this.DeleteAutobusBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.PathTB = new System.Windows.Forms.TextBox();
             this.ViewAutobus.SuspendLayout();
+            this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.AutobusDataGridView)).BeginInit();
             this.panel5.SuspendLayout();
             this.Message.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // ViewAutobus
@@ -78,6 +80,15 @@ namespace DispatcherAdmin
             this.ViewAutobus.Text = "Посмотреть автобусы";
             this.ViewAutobus.UseVisualStyleBackColor = true;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.AutobusDataGridView);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(184, 20);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(716, 466);
+            this.panel6.TabIndex = 3;
+            // 
             // AutobusDataGridView
             // 
             this.AutobusDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -89,6 +100,8 @@ namespace DispatcherAdmin
             // 
             // panel5
             // 
+            this.panel5.Controls.Add(this.PathTB);
+            this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.DeleteAutobusBtn);
             this.panel5.Controls.Add(this.AddAutobusBtn);
             this.panel5.Controls.Add(this.AutobusTB);
@@ -97,6 +110,39 @@ namespace DispatcherAdmin
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(179, 466);
             this.panel5.TabIndex = 2;
+            // 
+            // DeleteAutobusBtn
+            // 
+            this.DeleteAutobusBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.DeleteAutobusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DeleteAutobusBtn.Location = new System.Drawing.Point(0, 326);
+            this.DeleteAutobusBtn.Name = "DeleteAutobusBtn";
+            this.DeleteAutobusBtn.Size = new System.Drawing.Size(179, 70);
+            this.DeleteAutobusBtn.TabIndex = 5;
+            this.DeleteAutobusBtn.Text = "Удалить";
+            this.DeleteAutobusBtn.UseVisualStyleBackColor = true;
+            this.DeleteAutobusBtn.Click += new System.EventHandler(this.DeleteAutobusBtn_Click);
+            // 
+            // AddAutobusBtn
+            // 
+            this.AddAutobusBtn.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.AddAutobusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddAutobusBtn.Location = new System.Drawing.Point(0, 396);
+            this.AddAutobusBtn.Name = "AddAutobusBtn";
+            this.AddAutobusBtn.Size = new System.Drawing.Size(179, 70);
+            this.AddAutobusBtn.TabIndex = 4;
+            this.AddAutobusBtn.Text = "Добавить";
+            this.AddAutobusBtn.UseVisualStyleBackColor = true;
+            this.AddAutobusBtn.Click += new System.EventHandler(this.AddAutobusBtn_Click);
+            // 
+            // AutobusTB
+            // 
+            this.AutobusTB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.AutobusTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AutobusTB.Location = new System.Drawing.Point(0, 0);
+            this.AutobusTB.Name = "AutobusTB";
+            this.AutobusTB.Size = new System.Drawing.Size(179, 26);
+            this.AutobusTB.TabIndex = 3;
             // 
             // Message
             // 
@@ -120,26 +166,6 @@ namespace DispatcherAdmin
             this.panel1.Size = new System.Drawing.Size(899, 480);
             this.panel1.TabIndex = 2;
             // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.SendBtn);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(10, 406);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(879, 69);
-            this.panel2.TabIndex = 2;
-            // 
-            // SendBtn
-            // 
-            this.SendBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.SendBtn.Location = new System.Drawing.Point(702, 0);
-            this.SendBtn.Name = "SendBtn";
-            this.SendBtn.Size = new System.Drawing.Size(177, 69);
-            this.SendBtn.TabIndex = 0;
-            this.SendBtn.Text = "Разослать";
-            this.SendBtn.UseVisualStyleBackColor = true;
-            this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
-            // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -161,46 +187,15 @@ namespace DispatcherAdmin
             this.splitContainer1.SplitterDistance = 450;
             this.splitContainer1.TabIndex = 3;
             // 
-            // panel3
+            // MessageTB
             // 
-            this.panel3.Controls.Add(this.RefreshBtn);
-            this.panel3.Controls.Add(this.label1);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel3.Location = new System.Drawing.Point(5, 5);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(415, 52);
-            this.panel3.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 16);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Список автобусов";
-            // 
-            // RefreshBtn
-            // 
-            this.RefreshBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.RefreshBtn.Location = new System.Drawing.Point(281, 0);
-            this.RefreshBtn.Name = "RefreshBtn";
-            this.RefreshBtn.Size = new System.Drawing.Size(134, 52);
-            this.RefreshBtn.TabIndex = 1;
-            this.RefreshBtn.Text = "Обновить";
-            this.RefreshBtn.UseVisualStyleBackColor = true;
-            // 
-            // AutobusLB
-            // 
-            this.AutobusLB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AutobusLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AutobusLB.FormattingEnabled = true;
-            this.AutobusLB.ItemHeight = 20;
-            this.AutobusLB.Location = new System.Drawing.Point(5, 57);
-            this.AutobusLB.Name = "AutobusLB";
-            this.AutobusLB.Size = new System.Drawing.Size(415, 339);
-            this.AutobusLB.TabIndex = 2;
-            this.AutobusLB.SelectedIndexChanged += new System.EventHandler(this.AutobusLB_SelectedIndexChanged);
+            this.MessageTB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MessageTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MessageTB.Location = new System.Drawing.Point(5, 57);
+            this.MessageTB.Multiline = true;
+            this.MessageTB.Name = "MessageTB";
+            this.MessageTB.Size = new System.Drawing.Size(440, 339);
+            this.MessageTB.TabIndex = 3;
             // 
             // panel4
             // 
@@ -220,15 +215,66 @@ namespace DispatcherAdmin
             this.label2.TabIndex = 1;
             this.label2.Text = "Сообщение для пользователей";
             // 
-            // MessageTB
+            // AutobusLB
             // 
-            this.MessageTB.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MessageTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.MessageTB.Location = new System.Drawing.Point(5, 57);
-            this.MessageTB.Multiline = true;
-            this.MessageTB.Name = "MessageTB";
-            this.MessageTB.Size = new System.Drawing.Size(440, 339);
-            this.MessageTB.TabIndex = 3;
+            this.AutobusLB.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AutobusLB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AutobusLB.FormattingEnabled = true;
+            this.AutobusLB.ItemHeight = 20;
+            this.AutobusLB.Location = new System.Drawing.Point(5, 57);
+            this.AutobusLB.Name = "AutobusLB";
+            this.AutobusLB.Size = new System.Drawing.Size(415, 339);
+            this.AutobusLB.TabIndex = 2;
+            this.AutobusLB.SelectedIndexChanged += new System.EventHandler(this.AutobusLB_SelectedIndexChanged);
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.RefreshBtn);
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(5, 5);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(415, 52);
+            this.panel3.TabIndex = 1;
+            // 
+            // RefreshBtn
+            // 
+            this.RefreshBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.RefreshBtn.Location = new System.Drawing.Point(281, 0);
+            this.RefreshBtn.Name = "RefreshBtn";
+            this.RefreshBtn.Size = new System.Drawing.Size(134, 52);
+            this.RefreshBtn.TabIndex = 1;
+            this.RefreshBtn.Text = "Обновить";
+            this.RefreshBtn.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 16);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Список автобусов";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.SendBtn);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(10, 406);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(879, 69);
+            this.panel2.TabIndex = 2;
+            // 
+            // SendBtn
+            // 
+            this.SendBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.SendBtn.Location = new System.Drawing.Point(702, 0);
+            this.SendBtn.Name = "SendBtn";
+            this.SendBtn.Size = new System.Drawing.Size(177, 69);
+            this.SendBtn.TabIndex = 0;
+            this.SendBtn.Text = "Разослать";
+            this.SendBtn.UseVisualStyleBackColor = true;
+            this.SendBtn.Click += new System.EventHandler(this.SendBtn_Click);
             // 
             // tabControl1
             // 
@@ -242,47 +288,24 @@ namespace DispatcherAdmin
             this.tabControl1.Size = new System.Drawing.Size(913, 515);
             this.tabControl1.TabIndex = 0;
             // 
-            // panel6
+            // label3
             // 
-            this.panel6.Controls.Add(this.AutobusDataGridView);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(184, 20);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(716, 466);
-            this.panel6.TabIndex = 3;
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label3.Location = new System.Drawing.Point(0, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 16);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Маршрут";
             // 
-            // AutobusTB
+            // PathTB
             // 
-            this.AutobusTB.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AutobusTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AutobusTB.Location = new System.Drawing.Point(0, 0);
-            this.AutobusTB.Name = "AutobusTB";
-            this.AutobusTB.Size = new System.Drawing.Size(179, 26);
-            this.AutobusTB.TabIndex = 3;
-            // 
-            // AddAutobusBtn
-            // 
-            this.AddAutobusBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.AddAutobusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddAutobusBtn.Location = new System.Drawing.Point(0, 26);
-            this.AddAutobusBtn.Name = "AddAutobusBtn";
-            this.AddAutobusBtn.Size = new System.Drawing.Size(179, 70);
-            this.AddAutobusBtn.TabIndex = 4;
-            this.AddAutobusBtn.Text = "Добавить";
-            this.AddAutobusBtn.UseVisualStyleBackColor = true;
-            this.AddAutobusBtn.Click += new System.EventHandler(this.AddAutobusBtn_Click);
-            // 
-            // DeleteAutobusBtn
-            // 
-            this.DeleteAutobusBtn.Dock = System.Windows.Forms.DockStyle.Top;
-            this.DeleteAutobusBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteAutobusBtn.Location = new System.Drawing.Point(0, 96);
-            this.DeleteAutobusBtn.Name = "DeleteAutobusBtn";
-            this.DeleteAutobusBtn.Size = new System.Drawing.Size(179, 70);
-            this.DeleteAutobusBtn.TabIndex = 5;
-            this.DeleteAutobusBtn.Text = "Удалить";
-            this.DeleteAutobusBtn.UseVisualStyleBackColor = true;
-            this.DeleteAutobusBtn.Click += new System.EventHandler(this.DeleteAutobusBtn_Click);
+            this.PathTB.Dock = System.Windows.Forms.DockStyle.Top;
+            this.PathTB.Location = new System.Drawing.Point(0, 42);
+            this.PathTB.Multiline = true;
+            this.PathTB.Name = "PathTB";
+            this.PathTB.Size = new System.Drawing.Size(179, 181);
+            this.PathTB.TabIndex = 7;
             // 
             // MainForm
             // 
@@ -293,23 +316,23 @@ namespace DispatcherAdmin
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.ViewAutobus.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.AutobusDataGridView)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             this.Message.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -336,5 +359,7 @@ namespace DispatcherAdmin
         private System.Windows.Forms.Button AddAutobusBtn;
         private System.Windows.Forms.TextBox AutobusTB;
         private System.Windows.Forms.Button DeleteAutobusBtn;
+        private System.Windows.Forms.TextBox PathTB;
+        private System.Windows.Forms.Label label3;
     }
 }

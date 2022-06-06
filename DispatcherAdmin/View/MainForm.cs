@@ -110,7 +110,7 @@ namespace DispatcherAdmin
         {
             if (!string.IsNullOrWhiteSpace(AutobusTB.Text))
             {
-                _dataBaseConnection.AddNewAutobus(AutobusTB.Text);
+                _dataBaseConnection.AddNewAutobus(AutobusTB.Text, PathTB.Text);
                 RefreshData();
             }
         }

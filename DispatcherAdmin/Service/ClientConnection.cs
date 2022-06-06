@@ -35,6 +35,7 @@ namespace DispatcherAdmin.Service
                             {
                                 IdAutobus = int.TryParse(reader[0].ToString(), out _) ? Convert.ToInt32(reader[0]) : 0,
                                 NumberAutobus = reader[1].ToString(),
+                                PathAutobus = reader[2].ToString(),
                             };
                             autobusList.Add(autobusModel);
                         }
@@ -53,7 +54,7 @@ namespace DispatcherAdmin.Service
             return autobusList;
         }
 
-        public void AddNewAutobus(string autobus)
+        public void AddNewAutobus(string autobus, string path)
         {
             try
             {
@@ -62,8 +63,9 @@ namespace DispatcherAdmin.Service
                 using (var command = new SqlCommand())
                 {
                     command.Connection = base.Connection;
-                    command.CommandText = "INSERT INTO Autobus VALUES (@numberAutobus)";
+                    command.CommandText = "INSERT INTO Autobus VALUES (@numberAutobus, @pathAutobus)";
                     command.Parameters.Add("@numberAutobus", SqlDbType.NVarChar).Value = autobus;
+                    command.Parameters.Add("@pathAutobus", SqlDbType.NVarChar).Value = path;
                     command.ExecuteNonQuery();
                 }
             }

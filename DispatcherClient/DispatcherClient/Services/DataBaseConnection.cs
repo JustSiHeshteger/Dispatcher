@@ -25,9 +25,9 @@ namespace DispatcherClient.Services
             this._notification = notification;
         }
 
-        public async Task<List<string>> GetAllDataAsync()
+        public async Task<List<AutobusModel>> GetAllDataAsync()
         {
-            var autobusList = new List<string>();
+            var autobusList = new List<AutobusModel>();
 
             await Task.Run(() =>
             {
@@ -38,13 +38,17 @@ namespace DispatcherClient.Services
                     {
                         connection.Open();
                         command.Connection = connection;
-                        command.CommandText = "SELECT number_autobus FROM Autobus";
+                        command.CommandText = "SELECT number_autobus, autobus_path FROM Autobus";
 
                         using (var reader = command.ExecuteReader())
                         {
                             while (reader.Read())
                             {
-                                var autobusModel = reader[0].ToString();
+                                var autobusModel = new AutobusModel()
+                                {
+                                    NumberAutobus = reader[0].ToString(),
+                                    PathAutobus = reader[1].ToString(),
+                                };
                                 autobusList.Add(autobusModel);
                             }
                         }
